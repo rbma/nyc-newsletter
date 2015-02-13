@@ -29,6 +29,9 @@ var canvasMethods = {
 	x: 0,
 	y: 0,
 
+	imgWidth: 50,
+	imgHeight: 40,
+
 	width: window.innerWidth,
 	height: window.innerHeight,
 
@@ -89,11 +92,14 @@ var canvasMethods = {
         for (var i = 0; i < self.noOfDrops; i++){
           var fallingDr = {};
 
-
+          if (window.innerWidth < 768){
+          	self.imgHeight = self.imgHeight / 1.5;
+          	self.imgWidth = self.imgWidth / 1.5;
+          }
           fallingDr.image = new Image();
           fallingDr.image.src = images[Math.floor(Math.random() * images.length)];
-          fallingDr.image.height = 40;
-          fallingDr.image.width = 50;
+          fallingDr.image.height = self.imgHeight;
+          fallingDr.image.width = self.imgWidth;
 
           fallingDr.x = Math.random() * canvas.width;
           // ------------------------------------------------

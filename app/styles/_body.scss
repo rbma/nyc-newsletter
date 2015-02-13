@@ -22,7 +22,7 @@
   .twitter-share-button{
     position: absolute;
     top: 18px;
-    left: 120px;
+    left: 110px;
     display: inline-block;
   }
   
@@ -39,19 +39,38 @@
 
   .text-container{
     opacity: 1;
+    margin-top: 15%;
     @include fast();
     @include user-select(none);
     @include animation(dropIn .4s ease);
-    width: 70%;
+    width: 90%;
+    @media (orientation: landscape){
+      margin-top: 5%;
+    }
+    @include mq("medium"){
+      width: 80%;
+    }
+    @include mq("large"){
+      width: 70%;
+    }
     img.logo{
-      max-width: 100px;
+      max-width: 70px;
       margin-bottom: -15px;
+      @include mq("small"){
+        max-width: 100px;
+        @media (orientation: landscape){
+          max-width: 70px;
+        }
+      }
     }
   }
 
   footer{
     h3{
-      font-size: 0.8em;
+      font-size: 0.6em;
+      @include mq("large"){
+        font-size: 0.8em;
+      }
     }
   }
 }
