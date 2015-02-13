@@ -1,0 +1,130 @@
+'use strict';
+
+/*global ga:false, requestAnimationFrame:false */
+
+
+// -------------------------------------------------
+//
+// Canvas setup
+// 
+// -------------------------------------------------
+
+var canvas, ctx, animate;
+
+var fallingDrops = [];
+
+var images = ['images/cursor.png', 'images/cursor_hand.png'];
+
+var width = window.innerWidth;
+var height = window.innerHeight;
+
+var drawBg = function(){
+	ctx.clearRect(0,0,width,height);
+};
+
+var canvasMethods = {
+	fallingDrops: [],
+	noOfDrops: 10,
+
+	x: 0,
+	y: 0,
+
+	width: window.innerWidth,
+	height: window.innerHeight,
+
+	reset: function(){
+		var self = this;
+
+		drawBg();
+		self.width = window.innerWidth;
+      	self.height = window.innerHeight;
+      
+      	canvas.width = self.width;
+      	canvas.height = self.height;
+
+
+	},
+
+	draw: function(){
+
+		drawBg();
+
+
+		for (var i = 0; i < fallingDrops.length; i++){
+
+			ctx.drawImage (fallingDrops[i].image, fallingDrops[i].x, fallingDrops[i].y, fallingDrops[i].image.width, fallingDrops[i].image.height);
+			fallingDrops[i].y += fallingDrops[i].speed; //Set the falling speed
+
+
+			if (fallingDrops[i].y > height + 500){  //Repeat the raindrop when it falls out of view
+				fallingDrops[i].y = -55; //Account for the image size
+				fallingDrops[i].x = Math.random() * width;    //Make it appear randomly along the width    
+			}
+		}
+
+		animate = requestAnimationFrame(canvasMethods.draw);
+	},
+
+	setup: function(){
+      var self = this;
+
+      canvas = document.createElement('canvas');
+
+      
+
+      self.width = window.innerWidth;
+      self.height = window.innerHeight;
+      
+      canvas.width = self.width;
+      canvas.height = self.height;
+      canvas.style.opacity = 0.9;
+      canvas.style.zIndex = 1;
+
+      document.body.appendChild(canvas);
+
+      if (canvas.getContext){
+
+        ctx = canvas.getContext('2d');
+
+        for (var i = 0; i < self.noOfDrops; i++){
+          var fallingDr = {};
+
+
+          fallingDr.image = new Image();
+          fallingDr.image.src = 'images/hand.png';
+          fallingDr.image.height = 50;
+          fallingDr.image.width = 50;
+
+          fallingDr.x = Math.random() * canvas.width;
+          // ------------------------------------------------
+          // Make sure they are above the page
+          //
+          
+          fallingDr.y = Math.random() * -500 - 250;
+          fallingDr.speed = 3 + Math.random() * 2;
+          fallingDrops.push(fallingDr);
+        }
+
+        canvasMethods.draw();
+      }
+
+    }
+};
+
+window.addEventListener('resize', canvasMethods.reset, false);
+
+
+
+// -------------------------------------------------
+//
+// Track signups
+// 
+// -------------------------------------------------
+
+$('#subscribe').on('click', function(){
+	ga('send', 'event', 'button', 'click', 'Subscribe');
+});
+
+setTimeout(function(){
+	canvasMethods.setup();
+},1000);

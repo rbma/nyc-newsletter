@@ -1,0 +1,121 @@
+// -------------------------------------------------
+//
+// Font imports
+// 
+// -------------------------------------------------
+
+
+@import url(http://fonts.googleapis.com/css?family=Inconsolata:400,700);
+
+
+// -------------------------------------------------
+//
+// Font Face Declarations
+// 
+// -------------------------------------------------
+/* Webfont: ClanPro-NarrNews */@font-face {
+    font-family: 'Clan';
+    src: url('../fonts/ClanPro-NarrNews.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/ClanPro-NarrNews.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/ClanPro-NarrNews.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/ClanPro-NarrNews.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/ClanPro-NarrNews.svg#ClanPro-NarrNews') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+/* Webfont: ClanPro-NarrowBold */@font-face {
+    font-family: 'Clan';
+    src: url('../fonts/ClanPro-NarrowBold.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/ClanPro-NarrowBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/ClanPro-NarrowBold.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/ClanPro-NarrowBold.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/ClanPro-NarrowBold.svg#ClanPro-NarrowBold') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+}
+
+/* Webfont: ClanPro-NarrowNewsItalic */@font-face {
+    font-family: 'Clan';
+    src: url('../fonts/ClanPro-NarrowNewsItalic.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/ClanPro-NarrowNewsItalic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/ClanPro-NarrowNewsItalic.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/ClanPro-NarrowNewsItalic.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/ClanPro-NarrowNewsItalic.svg#ClanPro-NarrowNewsItalic') format('svg'); /* Legacy iOS */
+    font-style: italic;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+/* Webfont: ClanPro-NarrowUltra */@font-face {
+    font-family: 'Clan';
+    src: url('../fonts/ClanPro-NarrowUltra.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/ClanPro-NarrowUltra.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/ClanPro-NarrowUltra.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/ClanPro-NarrowUltra.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/ClanPro-NarrowUltra.svg#ClanPro-NarrowUltra') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+}
+
+/* Webfont: ClanPro-NarrowUltraItalic */@font-face {
+    font-family: 'Clan';
+    src: url('../fonts/ClanPro-NarrowUltraItalic.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/ClanPro-NarrowUltraItalic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/ClanPro-NarrowUltraItalic.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/ClanPro-NarrowUltraItalic.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/ClanPro-NarrowUltraItalic.svg#ClanPro-NarrowUltraItalic') format('svg'); /* Legacy iOS */
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+// -------------------------------------------------
+//
+// Styles
+// 
+// -------------------------------------------------
+
+
+body {
+  font-family: 'Clan', 'Inconsolata', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 22px;
+}
+
+h1, h2{
+	text-transform: uppercase;
+	line-height: 1;
+	margin: 0;
+
+}
+
+h2{
+    font-size: 0.8em;
+    line-height: 2;
+    margin-top: 50px;
+    @include mq("large"){
+        font-size: 1.2em;
+    }
+}
+
+h1{
+	font-size: 1em;
+    letter-spacing: -1px;
+	@include mq("large"){
+		font-size: 2.5em;
+	}
+}
+
+a{
+  color: white;
+}
+
+form{
+	input{
+		font-family: 'Inconsolata';
+	}
+}
