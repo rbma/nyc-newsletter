@@ -13,7 +13,7 @@ var canvas, ctx, animate;
 
 var fallingDrops = [];
 
-var images = ['images/cursor.png', 'images/cursor_hand.png'];
+var images = ['images/mail.png', 'images/hand.png', 'images/note2.png', 'images/note1.png'];
 
 var width = window.innerWidth;
 var height = window.innerHeight;
@@ -24,7 +24,7 @@ var drawBg = function(){
 
 var canvasMethods = {
 	fallingDrops: [],
-	noOfDrops: 10,
+	noOfDrops: 5,
 
 	x: 0,
 	y: 0,
@@ -37,10 +37,10 @@ var canvasMethods = {
 
 		drawBg();
 		self.width = window.innerWidth;
-      	self.height = window.innerHeight;
-      
-      	canvas.width = self.width;
-      	canvas.height = self.height;
+		self.height = window.innerHeight;
+
+		canvas.width = self.width;
+		canvas.height = self.height;
 
 
 	},
@@ -77,7 +77,7 @@ var canvasMethods = {
       
       canvas.width = self.width;
       canvas.height = self.height;
-      canvas.style.opacity = 0.9;
+      canvas.style.opacity = 1;
       canvas.style.zIndex = 1;
 
       document.body.appendChild(canvas);
@@ -91,8 +91,8 @@ var canvasMethods = {
 
 
           fallingDr.image = new Image();
-          fallingDr.image.src = 'images/hand.png';
-          fallingDr.image.height = 50;
+          fallingDr.image.src = images[Math.floor(Math.random() * images.length)];
+          fallingDr.image.height = 40;
           fallingDr.image.width = 50;
 
           fallingDr.x = Math.random() * canvas.width;

@@ -6,6 +6,9 @@ form{
     @include fast();
     @include animation-delay(.5s);
     @include animation(dropIn .8s ease);
+    @include mq("medium"){
+      width: 70%;
+    }
     @include mq("large"){
       width: 50%;
     }
@@ -52,9 +55,12 @@ form{
       font-weight: lighter;
       -webkit-appearance: none;
       border-radius: 0;
-      border-bottom: 5px solid $text;
+      border-bottom: 3px solid $text;
       margin: 0 10px;
       display: block;
+      @include mq("large"){
+        border-bottom: 5px solid $text;
+      }
     }
     .form-button, button{
       font-weight: bold;

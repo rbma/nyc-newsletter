@@ -96,9 +96,10 @@ h1, h2{
 h2{
     font-size: 0.8em;
     line-height: 2;
-    margin-top: 50px;
+
     @include mq("large"){
         font-size: 1.2em;
+        margin-top: 50px;
     }
 }
 
