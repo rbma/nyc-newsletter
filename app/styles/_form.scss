@@ -67,6 +67,11 @@ form{
         font-size: 30px;
         line-height: 40px;
       }
+      @include mq("large"){
+        height: 50px;
+        font-size: 40px;
+        line-height: 50px;
+      }
     }
     .form-button, button{
       font-weight: bold;
@@ -96,7 +101,6 @@ form{
         vertical-align: middle;
         @include box-sizing(border-box);
         line-height: 50px;
-        margin-top: 30px;
       }
       &:hover{
         background: $text;
