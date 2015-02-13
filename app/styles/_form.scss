@@ -26,19 +26,19 @@ form{
 
     ::-webkit-input-placeholder{
           font-weight: lighter;
-          color: $text;
+          color: $background;
     }
     :-moz-placeholder{
       font-weight: lighter;
-      color: $text;
+      color: $background;
     }
     ::-moz-placeholder{
       font-weight: lighter;
-      color: $text;
+      color: $background;
     }
     :-ms-input-placeholder{
       font-weight: lighter;
-      color: $text;
+      color: $background;
     }
 
     .form-input{
@@ -47,9 +47,9 @@ form{
       font-size: 30px;
       line-height: 40px;
       vertical-align: middle;
-      color: $text;
       float: left;
-      background: transparent;
+      background: $text;
+      color: $background;
       outline: none;
       border: 0;
       font-weight: lighter;

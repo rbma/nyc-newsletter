@@ -322,8 +322,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             'images/{,*/}*.webp',
             '{,*/}*.html',
-            'styles/fonts/{,*/}*.*',
-            '/fonts/*'
+            'styles/fonts/{,*/}*.*'
           ]
         }, {
           src: 'node_modules/apache-server-configs/dist/.htaccess',
@@ -367,7 +366,8 @@ module.exports = function (grunt) {
       ],
       dist: [
         'sass',
-        'copy:styles'
+        'copy:styles',
+        'imagemin'
       ]
     }
   });
@@ -422,7 +422,6 @@ module.exports = function (grunt) {
     'uglify',
     'copy:dist',
     'modernizr',
-    'rev',
     'usemin',
     'htmlmin'
   ]);
