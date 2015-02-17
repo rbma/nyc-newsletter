@@ -55,7 +55,7 @@ for (var i = 0; i < totalObjects; i ++) {
 }
 
 
-var renderer = new THREE.WebGLRenderer({alpha:true, antialias:true});
+var renderer = new THREE.WebGLRenderer({alpha:true, antialias: true});
 
 
 renderer.setSize(window.innerWidth, window.innerHeight);

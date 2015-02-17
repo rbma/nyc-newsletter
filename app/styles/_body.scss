@@ -39,7 +39,6 @@
 
   .text-container{
     opacity: 1;
-    margin-top: 15%;
     @include fast();
     @include user-select(none);
     @include animation(dropIn .4s ease);
@@ -75,6 +74,10 @@
     h3{
       font-size: 0.6em;
       color: $text;
+      a{
+        text-decoration: underline;
+        color: $text;
+      }
       @include mq("large"){
         font-size: 0.8em;
       }

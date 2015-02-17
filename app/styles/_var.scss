@@ -1,7 +1,7 @@
 $blue:#00fcff;
 // $text: #00283d;
-$text: white;
-$background: #00283d;
+$text: black;
+$background: white;
 
 @mixin fast() {
   @include transform(translate3d(0,0,0));

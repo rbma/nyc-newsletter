@@ -99,7 +99,7 @@ RDS.Zone Official Websites
 
         light = normalize(light);
 
-        float dProd = max(0.6, dot(vNormal, light));
+        float dProd = max(0.4, dot(vNormal, light));
 
         gl_FragColor = vec4(dProd, dProd, dProd, 1.0);
       }
