@@ -1,132 +1,99 @@
 'use strict';
 
-/*global ga:false, requestAnimationFrame:false */
+/*global ga:false, requestAnimationFrame:false, THREE:false */
+
+var planeDefinition = 100;
+var planeSize = 1245000;
+var totalObjects = 5000;
+var frame = 0;
 
 
-// -------------------------------------------------
-//
-// Canvas setup
-// 
-// -------------------------------------------------
+var container = document.createElement('div');
+document.body.appendChild( container );
 
-var canvas, ctx, animate;
 
-var fallingDrops = [];
+var camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight,1, 400000);
 
-var images = ['images/mail.png', 'images/hand.png', 'images/note2.png', 'images/note1.png'];
+camera.position.z = 550000;
+camera.position.y =10000;
 
-var width = window.innerWidth;
-var height = window.innerHeight;
+camera.lookAt( new THREE.Vector3(0,2000,0) );
 
-var drawBg = function(){
-	ctx.clearRect(0,0,width,height);
+
+var scene = new THREE.Scene();
+
+
+var uniforms = {
+	time: { type: 'f', value: 0.0 }
 };
 
-var canvasMethods = {
-	fallingDrops: [],
-	noOfDrops: 5,
-
-	x: 0,
-	y: 0,
-
-	imgWidth: 50,
-	imgHeight: 40,
-
-	width: window.innerWidth,
-	height: window.innerHeight,
-
-	reset: function(){
-		var self = this;
-
-		drawBg();
-		self.width = window.innerWidth;
-		self.height = window.innerHeight;
-
-		canvas.width = self.width;
-		canvas.height = self.height;
 
 
-	},
-
-	draw: function(){
-
-		drawBg();
-
-
-		for (var i = 0; i < fallingDrops.length; i++){
-
-			ctx.drawImage (fallingDrops[i].image, fallingDrops[i].x, fallingDrops[i].y, fallingDrops[i].image.width, fallingDrops[i].image.height);
-			fallingDrops[i].y += fallingDrops[i].speed; //Set the falling speed
+var material = new THREE.ShaderMaterial( {
+	uniforms: uniforms,
+	vertexShader: document.getElementById( 'vertexShader' ).textContent,
+	fragmentShader: document.getElementById( 'fragmentShader' ).textContent,
+	wireframe: true,
+	color: 'blue'
+});
 
 
-			if (fallingDrops[i].y > height + 500){  //Repeat the raindrop when it falls out of view
-				fallingDrops[i].y = -55; //Account for the image size
-				fallingDrops[i].x = Math.random() * width;    //Make it appear randomly along the width    
-			}
-		}
 
-		animate = requestAnimationFrame(canvasMethods.draw);
-	},
+var plane = new THREE.Mesh( new THREE.PlaneBufferGeometry( planeSize, planeSize, planeDefinition, planeDefinition ), material );
+plane.rotation.x -= Math.PI * 0.5;
 
-	setup: function(){
-      var self = this;
+scene.add( plane );
 
-      canvas = document.createElement('canvas');
+var geometry = new THREE.Geometry();
 
-      
+for (var i = 0; i < totalObjects; i ++) {
+  var vertex = new THREE.Vector3();
+  vertex.x = Math.random() * planeSize - (planeSize * 0.5);
+  vertex.y = (Math.random() * 100000) + 10000;
+  vertex.z = Math.random() * planeSize - (planeSize * 0.5);
+  geometry.vertices.push( vertex );
+}
 
-      self.width = window.innerWidth;
-      self.height = window.innerHeight;
-      
-      canvas.width = self.width;
-      canvas.height = self.height;
-      canvas.style.opacity = 1;
-      canvas.style.zIndex = 1;
 
-      document.body.appendChild(canvas);
+var renderer = new THREE.WebGLRenderer({alpha:true, antialias:true});
 
-      if (canvas.getContext){
 
-        ctx = canvas.getContext('2d');
+renderer.setSize(window.innerWidth, window.innerHeight);
 
-        for (var i = 0; i < self.noOfDrops; i++){
-          var fallingDr = {};
+container.appendChild( renderer.domElement );
 
-          fallingDr.image = new Image();
-          fallingDr.image.src = images[Math.floor(Math.random() * images.length)];
-          fallingDr.image.height = self.imgHeight;
-          fallingDr.image.width = self.imgWidth;
 
-          fallingDr.x = Math.random() * canvas.width;
-          // ------------------------------------------------
-          // Make sure they are above the page
-          //
-          
-          fallingDr.y = Math.random() * -500 - 250;
-          fallingDr.speed = 3 + Math.random() * 2;
-          fallingDrops.push(fallingDr);
-        }
 
-        canvasMethods.draw();
-      }
 
-    }
-};
 
-window.addEventListener('resize', canvasMethods.reset, false);
+function onWindowResize(){
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+
+	renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function render() {
+	requestAnimationFrame( render );
+	camera.position.z -= 50;
+	uniforms.time.value = frame;
+
+	frame += 0.04;
+	renderer.render( scene, camera );
+}
+
+
+render();
+window.addEventListener('resize', onWindowResize, false);
 
 
 
 // -------------------------------------------------
 //
-// Track signups
+// Analytics sh*t
 // 
 // -------------------------------------------------
-
 $('#subscribe').on('click', function(){
 	ga('send', 'event', 'button', 'click', 'Subscribe');
 });
 
-setTimeout(function(){
-	canvasMethods.setup();
-},1000);

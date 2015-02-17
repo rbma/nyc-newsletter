@@ -77,6 +77,34 @@ RDS.Zone Official Websites
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
+    <script id="vertexShader" type="x-shader/x-vertex">
+      uniform float time;
+      varying vec3 vNormal;
+
+      void main(void){
+        vec3 v = position;
+        vNormal = normal;
+        v.z += cos(1.0 * position.x + (time)) * 2085.5;
+
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(v, 1.0);
+      }
+    </script>
+
+    <script id="fragmentShader" type="x-shader/x-fragment">
+      varying vec3 vNormal;
+      uniform float time;
+
+      void main(void){
+        vec3 light = vec3(0.1, 0.9, 0.1);
+
+        light = normalize(light);
+
+        float dProd = max(0.6, dot(vNormal, light));
+
+        gl_FragColor = vec4(dProd, dProd, dProd, 1.0);
+      }
+    </script>
+
 
     <section class="splash-container">
 
@@ -116,6 +144,7 @@ RDS.Zone Official Websites
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/three.js/three.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
