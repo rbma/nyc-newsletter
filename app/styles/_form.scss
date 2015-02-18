@@ -33,6 +33,7 @@ form{
     ::-webkit-input-placeholder{
           font-weight: lighter;
           color: $background;
+          margin-left: 10px;
     }
     :-moz-placeholder{
       font-weight: lighter;
@@ -51,7 +52,7 @@ form{
       width: 100%;
       font-size: 20px;
       @include box-sizing(border-box);
-      padding: 0;
+      padding: 5px;
       border-width: 0;
       height: 30px;
       line-height: 30px;
@@ -67,12 +68,12 @@ form{
       border-radius: 3px;
       @include mq("medium"){
         height: 40px;
-        font-size: 30px;
+        font-size: 20px;
         line-height: 40px;
       }
       @include mq("large"){
         height: 50px;
-        font-size: 40px;
+        font-size: 20px;
         line-height: 50px;
       }
     }
