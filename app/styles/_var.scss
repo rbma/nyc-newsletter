@@ -1,6 +1,6 @@
 $blue:#00fcff;
-// $text: #00283d;
-$text: black;
+$text: #00283d;
+// $text: black;
 $background: white;
 
 @mixin fast() {
@@ -17,7 +17,8 @@ $breakpoints: (
   "medium" 700px,
   "large" 1040px,
   "extra-large" 1180px,
-  "extra-extra-large" 1200px
+  "extra-extra-large" 1200px,
+  "widescreen" 1600px
 );
 
 @mixin mq($size, $type: "min-width") { 

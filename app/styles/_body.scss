@@ -53,20 +53,7 @@
       width: 70%;
     }
     img.logo{
-      max-width: 70px;
-      margin-bottom: -25px;
-      @include mq("small"){
-        max-width: 100px;
-        @media (orientation: landscape){
-          max-width: 70px;
-        }
-      }
-      @include mq("large"){
-        max-width: 150px;
-        @media (orientation: landcape){
-          max-width: 150px;
-        }
-      }
+      max-width: 35%;
     }
   }
 

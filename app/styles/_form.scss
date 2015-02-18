@@ -8,12 +8,15 @@ form{
     @include animation-delay(.5s);
     @include animation(dropIn .8s ease);
     @include mq("medium"){
-      width: 80%;
+      width: 70%;
       margin: 10px 0;
     }
     @include mq("large"){
       width: 50%;
       margin: 30px 0;
+    }
+    @include mq("widescreen"){
+      width: 40%;
     }
     &:after{
       content: '';
@@ -84,7 +87,8 @@ form{
       max-width: 100%;
       padding: 0;
       display: block;
-      width: 100%;
+      width: 50%;
+      margin-left: 25%;
       @include box-sizing(border-box);
       border-radius: 3px;
       height: 30px;
