@@ -1,5 +1,5 @@
 form{
-    width: 80%;
+    width: 70%;
     position: relative;
     margin: 0;
     display: block;
@@ -8,7 +8,7 @@ form{
     @include animation-delay(.5s);
     @include animation(dropIn .8s ease);
     @include mq("medium"){
-      width: 70%;
+      width: 60%;
       margin: 10px 0;
     }
     @include mq("large"){
